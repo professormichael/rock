@@ -1,0 +1,172 @@
+<Doctype>
+<html>
+<head>
+    <title>
+        Codic
+    </title>
+    <style>
+        :root{
+            --font_color:#555555;
+            --font_size:23px;
+            --font_style:calc(1vm/25px);
+        }
+        body{
+            display: grid;
+            place-content: center;
+        }
+         .disabled {
+             pointer-events: none;
+             visibility: visible;
+             color: black;
+             transition: visibility 2s;
+        }
+          .typewriter2 {
+              display: inline-block;
+              overflow: hidden;
+              white-space: nowrap;
+              font-size: 48px;
+              font-family: "Rockwell Extra Bold";
+              color: #555555;
+
+        }
+        .typewriter3{
+            width: 300px;
+            font-size: var(--font_size);
+            font-style: var(--font_style);
+            color: var(--font_color);
+        }
+        #first-div{
+            visibility: hidden;
+        }
+        #a{
+            visibility: visible;
+            height: 40px;
+            width: 100px;
+            border: none;
+            background-color: darkcyan;
+            border-radius: 3px;
+            color: antiquewhite;
+            font-size: 17px;
+            font-weight: 500;
+            margin-top: 30px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            cursor: pointer;
+
+        }
+        input{
+            padding-top: 10px;
+            padding-bottom:10px ;
+            padding-left: 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: calc(1vm/25px);
+            
+
+        }
+        #button1,#button2{
+            
+            height: 40px;
+            width: 100px;
+            border: none;
+            background-color: darkcyan;
+            border-radius: 3px;
+            color: antiquewhite;
+            font-size: 17px;
+            font-weight: 500;
+            margin-top: 30px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            cursor: pointer;
+        }
+        p{
+            font-size: 20px;
+            font-weight: 500;
+            
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="typewriter3" class="typewriter3"></div>
+    <div id="first-div">
+    <button  id="a">Settings</button>
+    <div id="second-div">
+        <p>Do You Want TO Change the default time</p>
+        <input name="minute" placeholder="Enter Your Deisred Minute" id="first-input" type="number">
+        <input name="second" placeholder="Enter Your Deisred second" id="second-input" type="number">
+        <button id="button1">Update</button>
+        <p>Do You Want To Add A Name AS A Player</p>
+        <input name="player_change" placeholder="Enter Your Name" id="third-input" type="text">
+        <button id="button2">Update</button>
+
+    </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('a').addEventListener('click', function(){
+            document.getElementById('second-div').style.visibility = 'visible';
+        })
+        var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var laptopBreakpoint = 768;
+        var screen = ''
+        if (screenWidth < laptopBreakpoint) {
+            console.log("This is a phone.");
+            screen = 'Tap The Screen';
+            document.addEventListener('click', function(){
+                window.location.href = 'rock.html'
+            })
+        }
+        else {
+            screen = 'press the Ctrl key to begin'
+            document.addEventListener('keydown', event =>{
+            switch (event.key) {
+                case 'Control':
+                    console.log('CTRL CLICKED')
+                    window.location.href = 'rock.html'
+                    break;
+
+            }
+    
+        });
+    }
+    document.getElementById('button1').addEventListener('click', function(){
+        const value1 = document.getElementById('first-input').value
+        const value2 = document.getElementById('second-input').value
+        localStorage.setItem('minute', JSON.stringify(value1))
+        localStorage.setItem('second', JSON.stringify(value2))
+        document.getElementById('first-input').value = '';
+        document.getElementById('second-input').value = '';
+
+    })
+    document.getElementById('button2').addEventListener('click', function(){
+        const value3 = document.getElementById('third-input').value;
+        localStorage.setItem('player',JSON.stringify(value3) )
+        document.getElementById('third-input').value = '';
+
+    })
+        
+        var sentence2 = 'Main Menu For The Rock, Paper And Scissors Game \n'+'\n'+ screen;
+        var typewriter2 = document.querySelector('.typewriter3');
+        var index2 = 0;
+        const animationDuration = 4 * 50;
+        setTimeout(function () {
+             function typeSentence2(){
+                if (index2 < sentence2.length){                    
+                typewriter2.textContent += sentence2.charAt(index2);
+                index2++;
+                setTimeout(typeSentence2, 100); // Adjust the delay as needed
+                
+                }
+
+             }
+             typeSentence2()
+             typewriter2.classList.add('disabled');    
+            },animationDuration);
+        })
+</script>
+</body>
+</html>

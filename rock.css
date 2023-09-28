@@ -1,0 +1,79 @@
+:root{
+    --font_all:25px;
+    --font_display:33;
+    --font_style:calc(1vm/27px)
+}
+body{
+    background-color: rgba(211, 211, 211, 0.897);
+    display: grid;
+    place-items: center;
+}
+button{
+    height: 50px;
+    width: 140px;
+    border: none;
+ 
+    border-radius: 4px;
+    color: blue;
+    margin-bottom: 20px;
+    background-color:floralwhite;
+    transition: opacity 0.15s;
+    
+}
+button:hover{
+    opacity: 0.5;
+}
+p{
+    margin-top: 7px;
+    
+    font-size: var(--font_all);
+    font-display:var(--font_display);
+    font-style: var(--font_style);
+}
+h5{
+    display: inline-block;
+    font-size: var(--font_all);
+    font-display: var(--font_display);
+    font-style: var(--font_style);
+
+}
+h4{
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    top: 20px;
+
+}
+.div{
+    margin-top: 30px;
+    height: 300px;
+    position: relative;
+}
+#pa{
+    top: 40px;
+    position:absolute;
+    left: 50%;
+}
+#par{
+    top: 0;
+    position:absolute;
+    left: 20px;
+}
+#parab{
+    top: 0;
+    position:absolute;
+    right: 20px;
+}
+#para, #parb{
+    top: 40px;
+    display: inline-block;
+}
+#para{
+    position:absolute;
+    left: 20px;
+
+}
+#parb{
+    position:absolute;
+    right: 20px;
+}
